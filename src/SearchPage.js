@@ -1,4 +1,5 @@
 import React from 'react';
+import LocationList from './LocationList';
 
 export default function SearchPage() {
 
@@ -15,7 +16,7 @@ export default function SearchPage() {
       </div>
       <div>
         <h3>Search Results</h3>
-        
+        <LocationList />
       </div>
     </>
   );
