@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { signIn, signUp, logOut } from './services/fetch-utils.js';
+import { signIn, signUp, } from './services/fetch-utils.js';
 
 export default function AuthPage({ setUser }) {
   const [email, setEmail] = useState('');
