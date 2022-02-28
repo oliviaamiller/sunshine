@@ -1,7 +1,8 @@
 import React from 'react';
+import './App.css';
 
 export default function Location({ location }) {
   return (
-    <div>{location.long}</div>
+    <div className='location'>{location.long}</div>
   );
 }
