@@ -30,9 +30,9 @@ function App() {
 
   return (
     <Router>
-      <div className="nav-link">
+      <div>
         {currentUser &&
-          <div>
+          <div className="nav-link">
             <NavLink to="/search">Search Page</NavLink>
             <NavLink to="/searchdetail">Search Detail Page</NavLink>
             <NavLink to="/favorites">Favorites Page</NavLink>

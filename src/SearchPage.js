@@ -1,7 +1,22 @@
 import React from 'react';
 
 export default function SearchPage() {
+
+  function handleSubmit() {
+
+  }
   return (
-    <div>SearchPage</div>
+    <>
+      <div>
+        <form>
+          <input placeholder='Current Location'/>
+          <button>Search</button>
+        </form>
+      </div>
+      <div>
+        <h3>Search Results</h3>
+        
+      </div>
+    </>
   );
 }
