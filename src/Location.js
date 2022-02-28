@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Location() {
+export default function Location({ location }) {
   return (
-    <div>Location</div>
+    <div>{location.long}</div>
   );
 }

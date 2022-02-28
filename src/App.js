@@ -9,7 +9,8 @@ import FavoritesPage from './FavoritesPage';
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState('');
+            
+  const [currentUser, setCurrentUser] = useState(getUser());
 
   useEffect(() => {
     async function fetch() {
@@ -42,9 +43,9 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/">
-            {currentUser
-              ? <Redirect to="/search" />
-              : <AuthPage setcurrentUser={setCurrentUser} />
+            {!currentUser
+              ? <AuthPage setcurrentUser={setCurrentUser} />
+              : <Redirect to="/search" />
             }
           </Route>
           <Route exact path="/search" >
