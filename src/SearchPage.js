@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
 import LocationList from './LocationList';
 import { buildCoordsByDistance } from './services/coordinate-utils';
+import data from './data.js';
+import { getLatLong } from './services/api-utils';
 
 
 export default function SearchPage() {
   const [userZip, setUserZip] = useState('97215');
   const [userCoords, setUserCoords] = useState({});
-  const [results, setResults] = useState([]);
-  const [locations, setLocations] = useState([]);
-  const [coordsN, setCoordsN] = useState({ lat: 37.773972, long: -122.431297 });
+  
 
   async function handleSubmit(e) {
     e.preventDefault();
     // take user location convert it to coords
     // using our geocoding api and store it in state
-    const response = await fetch(`/.netlify/functions/geocoding-endpoint?zip=${userZip}`);
-    const json = await response.json();
 
+    const latLong = await getLatLong(userZip);
 
-    const coordNResponse = await fetch(`/.netlify/functions/current-weather-endpoint?lat=${coordsN.lat}&long=${coordsN.long}`);
-    const coordJson = await coordNResponse.json();
+    setUserCoords(latLong);
+  
+    //in useEffect that depends on userCoords changing
+    const myArrayOfLatLongs = buildCoordsByDistance(userCoords);
 
+    const promises = myArrayOfLatLongs.map((latLong) => getWeather(latLong));
+    
+    const weathers = Promise.all(promises);
+
+    
+    // const coordNResponse = await fetch(`/.netlify/functions/current-weather-endpoint?lat=${lat}&long=${long}`);
+    // const coordJson = await coordNResponse.json();
+
+    
     //setResults.push(coordJson);
     
     // using the user coords in state go find 8 location coords within 55miles
@@ -29,6 +39,8 @@ export default function SearchPage() {
 
     //pass location array as a prop to LocationList
   }
+  console.log(userCoords);
+  //promise.all  -> a function to use if you want to make more than one call
   return (
     <>
       <div>
@@ -39,7 +51,7 @@ export default function SearchPage() {
       </div>
       <div>
         <h3>Search Results</h3>
-        <LocationList results={results}/>
+        <LocationList locations={data} />
       </div>
     </>
   );
