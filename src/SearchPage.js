@@ -13,16 +13,22 @@ export default function SearchPage() {
   const [forecasts, setForecasts] = useState([]);
 
   useEffect(() => {
+    async function fetch() {
+      const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, 321869);
 
-    const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, 321869);
+      console.log(userCoords);
+      console.log(latLongArray);
+      
+      const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long)); 
+      const weathers = await Promise.all(promises);
+      console.log(weathers);
+    }
 
-    console.log(userCoords);
-    console.log(latLongArray);
-    // const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long)); 
+    if (userCoords.lat) {
+      fetch();
+    }
+
     
-    // setForecasts(Promise.all(promises));
-
-    // console.log(forecasts);
 
   }, [userCoords]);
   
