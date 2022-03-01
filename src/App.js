@@ -9,7 +9,11 @@ import FavoritesPage from './FavoritesPage';
 
 
 function App() {
+
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('supabase.auth.token'));
+
+           
+
 
 
   
@@ -28,9 +32,13 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/">
+
             {currentUser
               ? <Redirect to="/search" />
               : <AuthPage setCurrentUser={setCurrentUser} />
+
+            
+
             }
           </Route>
           <Route exact path="/search" >
