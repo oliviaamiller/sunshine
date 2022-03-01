@@ -3,7 +3,7 @@ require('dotenv').config();
 
 exports.handler = async (event, context) => {
   try {
-    const geocodeResponse = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${event.queryStringParameters.zip}&appid=${process.env.WEATHER_API_KEY}`);
+    const geocodeResponse = await fetch(`https://api.openweathermap.org/geo/1.0/zip?zip=${event.queryStringParameters.zip}&appid=${process.env.WEATHER_API_KEY}`);
     const geoJson = await geocodeResponse.json();
     return {
       statusCode: 200,

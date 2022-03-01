@@ -10,20 +10,20 @@ export default function SearchPage() {
 
   
 
-  const fakeData = [{ lat: 37.773972, long: -122.431297 }, 
+  const fakeData = [
+    { lat: 37.773972, long: -122.431297 }, 
     { lat: 42.331944, long: -122.861944 }, 
     { lat:47.608013, long: -122.335167 }, 
-    { lat: 51.50853, long: -0.12574 }];
+    { lat: 51.50853, long: -0.12574 }
+  ];
 
 
   async function handleSubmit(e) {
     e.preventDefault();
     // take user location convert it to coords
-    console.log('It works!!');
     // using our geocoding api and store it in state
     const response = await fetch(`/.netlify/functions/geocoding-endpoint?zip=${userZip}`);
     const json = await response.json();
-    console.log(json);
 
     // using the user coords in state go find 8 location coords within 55miles
     
