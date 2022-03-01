@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import LocationList from './LocationList';
+import { getCoordinates } from './services/coordinate-utils';
 
 
 export default function SearchPage() {
@@ -14,7 +15,7 @@ export default function SearchPage() {
   const fakeData = [
     { lat: 37.773972, long: -122.431297 }, 
     { lat: 42.331944, long: -122.861944 }, 
-    { lat:47.608013, long: -122.335167 }, 
+    { lat: 47.608013, long: -122.335167 }, 
     { lat: 51.50853, long: -0.12574 }
   ];
 
@@ -30,12 +31,12 @@ export default function SearchPage() {
     const coordNResponse = await fetch(`/.netlify/functions/current-weather-endpoint?lat=${coordsN.lat}&long=${coordsN.long}`);
     const coordJson = await coordNResponse.json();
 
-    setResults.push(coordJson);
+    //setResults.push(coordJson);
 
 
+    const newCoords = getCoordinates(37.773972, -122.431297, 80467.2, 0);
 
-
-  
+    console.log('NEW COORDS', newCoords);
     
     // using the user coords in state go find 8 location coords within 55miles
     
