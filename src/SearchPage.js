@@ -34,7 +34,7 @@ export default function SearchPage() {
     //setResults.push(coordJson);
 
 
-    const newCoords = getCoordinates(37.773972, -122.431297);
+    const newCoords = getCoordinates(37.773972, -122.431297, 80467.2, 0);
 
     console.log('NEW COORDS', newCoords);
     
