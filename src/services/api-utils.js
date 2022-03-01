@@ -6,3 +6,14 @@ export async function getLatLong(zip) {
   
   return { lat: json.lat, long: json.lon };
 }
+
+export async function getWeather(lat, long) {
+
+  const response = await fetch(`/.netlify/functions/current-weather-endpoint?lat=${lat}&long=${long}`);
+
+  const responseJson = await response.json();
+
+  console.log(responseJson);
+  return responseJson;
+
+}
