@@ -7,7 +7,7 @@ export default function Location({ location }) {
 
   return (
     <div className='location'>
-      <p>weather: {location.temp.min}</p>
+      <p>weather:</p>
     </div>
   );
 }
