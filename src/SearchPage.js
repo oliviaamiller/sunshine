@@ -10,16 +10,6 @@ export default function SearchPage() {
   const [locations, setLocations] = useState([]);
   const [coordsN, setCoordsN] = useState({ lat: 37.773972, long: -122.431297 });
 
-  
-
-  const fakeData = [
-    { lat: 37.773972, long: -122.431297 }, 
-    { lat: 42.331944, long: -122.861944 }, 
-    { lat: 47.608013, long: -122.335167 }, 
-    { lat: 51.50853, long: -0.12574 }
-  ];
-
-
   async function handleSubmit(e) {
     e.preventDefault();
     // take user location convert it to coords
@@ -34,9 +24,15 @@ export default function SearchPage() {
     //setResults.push(coordJson);
 
 
-    const newCoords = getCoordinates(37.773972, -122.431297, 80467.2, 0);
+    const newCoordsN = getCoordinates(37.773972, -122.431297, 80467.2, 0);
+    const newCoordsS = getCoordinates(37.773972, -122.431297, -80467.2, 0);
+    const newCoordsE = getCoordinates(37.773972, -122.431297, 0, 80467.2);
+    const newCoordsW = getCoordinates(37.773972, -122.431297, 0, -80467.2);
 
-    console.log('NEW COORDS', newCoords);
+    console.log('NEW COORDS', newCoordsN);
+    console.log('NEW COORDS', newCoordsS);
+    console.log('NEW COORDS', newCoordsE);
+    console.log('NEW COORDS', newCoordsW);
     
     // using the user coords in state go find 8 location coords within 55miles
     
