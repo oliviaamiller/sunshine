@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import { signIn, signUp, logOut } from './services/fetch-utils.js';
+import { signIn, signUp, } from './services/fetch-utils.js';
 
-export default function AuthPage({ setUser }) {
+export default function AuthPage({ setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
     
@@ -11,13 +11,13 @@ export default function AuthPage({ setUser }) {
 
     const user = await signIn(email, password);
       
-    setUser(user);
+    setCurrentUser(user);
   }
     
   async function handleSignUp() {
     const user = await signUp(email, password);
 
-    setUser(user);
+    setCurrentUser(user);
   }
     
   return (

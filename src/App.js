@@ -9,24 +9,10 @@ import FavoritesPage from './FavoritesPage';
 
 
 function App() {
-  const [currentUser, setCurrentUser] = useState('');
+  const [currentUser, setCurrentUser] = useState(localStorage.getItem('supabase.auth.token'));
 
-  useEffect(() => {
-    async function fetch() {
-      const data = getUser();
 
-      setCurrentUser(data);
-    }
-
-    fetch();
-
-  }, []);
-
-  async function handleLogout() {
-    logOut();
-
-    setCurrentUser('');
-  }
+  
 
   return (
     <Router>
@@ -36,7 +22,7 @@ function App() {
             <NavLink to="/search">Search Page</NavLink>
             <NavLink to="/searchdetail">Search Detail Page</NavLink>
             <NavLink to="/favorites">Favorites Page</NavLink>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={logOut}>Logout</button>
           </div>}
       </div> 
       <div>
@@ -44,25 +30,25 @@ function App() {
           <Route exact path="/">
             {currentUser
               ? <Redirect to="/search" />
-              : <AuthPage setcurrentUser={setCurrentUser} />
+              : <AuthPage setCurrentUser={setCurrentUser} />
             }
           </Route>
           <Route exact path="/search" >
-            {currentUser
-              ? <SearchPage />
-              : <Redirect to="/" />
+            {!currentUser
+              ? <Redirect to="/" />
+              : <SearchPage />
             }
           </Route>
           <Route exact path="/searchdetail" >
-            {currentUser
-              ? <SearchDetailPage />
-              : <Redirect to="/" />
+            {!currentUser
+              ? <Redirect to="/" />
+              : <SearchDetailPage />
             }
           </Route>
           <Route exact path="/favorites" >
-            {currentUser
-              ? <FavoritesPage />
-              : <Redirect to="/" />
+            {!currentUser
+              ? <Redirect to="/" />
+              : <FavoritesPage />
             }
           </Route>
         </Switch>
