@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LocationList from './LocationList';
 import { buildCoordsByDistance } from './services/coordinate-utils';
 import data from './data.js';
-import { getLatLong } from './services/api-utils';
+import { getLatLong, getWeather } from './services/api-utils';
 
 
 export default function SearchPage() {
   const [userZip, setUserZip] = useState('97215');
   const [userCoords, setUserCoords] = useState({});
+  // distance is in meters 321869m = 200mi
+  const [distance, setDistance] = useState(321869);
+  const [forecasts, setForecasts] = useState([]);
+
+  useEffect(() => {
+
+    const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, 321869);
+
+    console.log(userCoords);
+    console.log(latLongArray);
+    // const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long)); 
+    
+    // setForecasts(Promise.all(promises));
+
+    // console.log(forecasts);
+
+  }, [userCoords]);
   
 
   async function handleSubmit(e) {
@@ -19,27 +36,8 @@ export default function SearchPage() {
 
     setUserCoords(latLong);
   
-    //in useEffect that depends on userCoords changing
-    const myArrayOfLatLongs = buildCoordsByDistance(userCoords);
-
-    const promises = myArrayOfLatLongs.map((latLong) => getWeather(latLong));
-    
-    const weathers = Promise.all(promises);
-
-    
-    // const coordNResponse = await fetch(`/.netlify/functions/current-weather-endpoint?lat=${lat}&long=${long}`);
-    // const coordJson = await coordNResponse.json();
-
-    
-    //setResults.push(coordJson);
-    
-    // using the user coords in state go find 8 location coords within 55miles
-    
-    //store locations in an array
-
-    //pass location array as a prop to LocationList
   }
-  console.log(userCoords);
+ 
   //promise.all  -> a function to use if you want to make more than one call
   return (
     <>
