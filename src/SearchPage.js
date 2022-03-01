@@ -7,6 +7,7 @@ export default function SearchPage() {
   const [userCoords, setUserCoords] = useState({});
   const [results, setResults] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [coordsN, setCoordsN] = useState({ lat: 37.773972, long: -122.431297 });
 
   
 
@@ -25,6 +26,17 @@ export default function SearchPage() {
     const response = await fetch(`/.netlify/functions/geocoding-endpoint?zip=${userZip}`);
     const json = await response.json();
 
+
+    const coordNResponse = await fetch(`/.netlify/functions/current-weather-endpoint?lat=${coordsN.lat}&long=${coordsN.long}`);
+    const coordJson = await coordNResponse.json();
+
+    setResults.push(coordJson);
+
+
+
+
+  
+    
     // using the user coords in state go find 8 location coords within 55miles
     
     //store locations in an array
@@ -41,7 +53,7 @@ export default function SearchPage() {
       </div>
       <div>
         <h3>Search Results</h3>
-        <LocationList locations={fakeData}/>
+        <LocationList results={results}/>
       </div>
     </>
   );
