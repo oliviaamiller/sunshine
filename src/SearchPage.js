@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LocationList from './LocationList';
-import { getCoordinates } from './services/coordinate-utils';
+import { buildCoordsByDistance } from './services/coordinate-utils';
 
 
 export default function SearchPage() {
@@ -22,17 +22,6 @@ export default function SearchPage() {
     const coordJson = await coordNResponse.json();
 
     //setResults.push(coordJson);
-
-
-    const newCoordsN = getCoordinates(37.773972, -122.431297, 80467.2, 0);
-    const newCoordsS = getCoordinates(37.773972, -122.431297, -80467.2, 0);
-    const newCoordsE = getCoordinates(37.773972, -122.431297, 0, 80467.2);
-    const newCoordsW = getCoordinates(37.773972, -122.431297, 0, -80467.2);
-
-    console.log('NEW COORDS', newCoordsN);
-    console.log('NEW COORDS', newCoordsS);
-    console.log('NEW COORDS', newCoordsE);
-    console.log('NEW COORDS', newCoordsW);
     
     // using the user coords in state go find 8 location coords within 55miles
     
