@@ -14,48 +14,35 @@ export default function SearchPage() {
 
   useEffect(() => {
     async function fetch() {
-      const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, 321869);
-
-      console.log(userCoords);
-      console.log(latLongArray);
-      
-      const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long)); 
-      const weathers = await Promise.all(promises);
-      console.log(weathers);
+      const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, distance);
+      const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long));
+      const weatherArray = await Promise.all(promises);
+      setForecasts(weatherArray);
     }
 
     if (userCoords.lat) {
       fetch();
     }
 
-    
-
-  }, [userCoords]);
-  
+  }, [userCoords, distance]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // take user location convert it to coords
-    // using our geocoding api and store it in state
-
     const latLong = await getLatLong(userZip);
-
     setUserCoords(latLong);
-  
   }
- 
-  //promise.all  -> a function to use if you want to make more than one call
+  
   return (
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <input placeholder='Current Location' value={userZip} onChange={e => setUserZip(e.target.value)}/>
+          <input placeholder='Current Location' value={userZip} onChange={e => setUserZip(e.target.value)} />
           <button type='submit'>Search</button>
         </form>
       </div>
       <div>
         <h3>Search Results</h3>
-        <LocationList locations={data} />
+        <LocationList locations={forecasts} />
       </div>
     </>
   );
