@@ -9,7 +9,7 @@ export default function SearchPage() {
   const [userZip, setUserZip] = useState('97215');
   const [userCoords, setUserCoords] = useState({});
   // distance is in meters 321869m = 200mi
-  const [distance, setDistance] = useState(321869);
+  const [distance, setDistance] = useState(80467);
   const [forecasts, setForecasts] = useState([]);
 
   useEffect(() => {

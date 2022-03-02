@@ -14,12 +14,16 @@ export default function Location({ location }) {
   return (
     <> 
       {
-        location.weather[0].main === 'Clear' &&
-        <div className='location'>
-          <p>{location.name}</p>
-          <p>{location.weather[0].main && 'Sunny'}</p>
-          <p>{temp()} degrees</p>
-        </div>
+        location.weather[0].main === 'Clear' ?
+          <div className='location'>
+            <p>{location.name}</p>
+            <p>{location.weather[0].main && 'Sunny'}</p>
+            <p>{temp()} °F</p>
+          </div>
+          :
+          <div>
+            <p>No Sunshine</p>
+          </div>
         
 
       
