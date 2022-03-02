@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { addToFavorites, getFavorites } from './services/fetch-utils';
 import { Link } from 'react-router-dom';
+import SearchDetailPage from './SearchDetailPage';
 
 
 
@@ -27,7 +28,7 @@ export default function Location({ location }) {
       `${location.main.temp}` - 273) + 32;
     return Math.round(f);
   }
- 
+  <SearchDetailPage location={location}/>;
   return (
     <>
       <Link to={`/SearchDetailPage/${location.id}`}>

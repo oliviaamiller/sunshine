@@ -1,9 +1,13 @@
-import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 
 export default function SearchDetailPage({ location }) {
+
+
   return (
-    <div>SearchDetailPage</div>
+    <div>
+      <p>{location.name}</p>
+      <p>{location.weather[0].main && 'Sunny'}</p>
+    </div>
   );
 }
