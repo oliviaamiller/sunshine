@@ -6,7 +6,7 @@ export default function AboutPage() {
   return ( 
     <div className='aboutpage'>
       {
-        devs.map((person, i) => <AboutCard key={person.name + i} person={person}/>)
+        devs.map((person, i) => <AboutCard key={`${person.name} + ${i}`} person={person}/>)
       }
     </div>
   );
