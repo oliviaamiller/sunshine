@@ -8,6 +8,7 @@ import { getLatLong, getWeather } from './services/api-utils';
 export default function SearchPage() {
   const [userZip, setUserZip] = useState('97215');
   const [userCoords, setUserCoords] = useState({});
+
   const [distanceInkm, setDistanceInkm] = useState(200);
   const [forecasts, setForecasts] = useState([]);
   const [locations, setLocations] = useState([]);
