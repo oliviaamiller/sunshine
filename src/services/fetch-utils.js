@@ -21,3 +21,17 @@ export async function logOut() {
 
   return window.location.href = '../';
 }
+
+export async function getFavorites() {
+  const response = await client
+    .from('favorite')
+    .select();
+  return checkError(response);
+}
+
+export async function addToFavorites(city) {
+  const response = await client
+    .from('favorite')
+    .insert(city);
+  return checkError(response);
+}
