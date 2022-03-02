@@ -8,13 +8,12 @@ import { getLatLong, getWeather } from './services/api-utils';
 export default function SearchPage() {
   const [userZip, setUserZip] = useState('97215');
   const [userCoords, setUserCoords] = useState({});
-  // distance is in meters 321869m = 200mi
-  const [distance, setDistance] = useState(321869);
+  const [distanceInkm, setDistanceInkm] = useState(200);
   const [forecasts, setForecasts] = useState([]);
 
   useEffect(() => {
     async function fetch() {
-      const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, distance);
+      const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, distanceInkm);
       const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long));
       const weatherArray = await Promise.all(promises);
       setForecasts(weatherArray);
@@ -24,14 +23,14 @@ export default function SearchPage() {
       fetch();
     }
 
-  }, [userCoords, distance]);
+  }, [userCoords, distanceInkm]);
 
   async function handleSubmit(e) {
     e.preventDefault();
     const latLong = await getLatLong(userZip);
     setUserCoords(latLong);
   }
-  
+
   return (
     <>
       <div>
