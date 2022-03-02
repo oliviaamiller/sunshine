@@ -15,7 +15,7 @@ export default function Location({ location }) {
       city_name: location.name,
       lat: location.coord.lat,
       long: location.coord.lon,
-      city_id: location.id
+      // city_id: location.id
     };
     await addToFavorites(favoriteObj);
     await getFavorites(); 
@@ -28,10 +28,10 @@ export default function Location({ location }) {
       `${location.main.temp}` - 273) + 32;
     return Math.round(f);
   }
-  <SearchDetailPage location={location}/>;
+  // <SearchDetailPage location={location}/>;
   return (
     <>
-      <Link to={`/SearchDetailPage/${location.id}`}>
+      <Link to={`/searchdetail/${location.id}`}>
         <div title="location" className='location' onClick={handleClick} >
           <p>{location.name}</p>
           <p>{location.weather[0].main && 'Sunny'}</p>
