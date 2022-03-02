@@ -31,7 +31,10 @@ export default function SearchPage() {
     const latLong = await getLatLong(userZip);
     setUserCoords(latLong);
   }
-  
+  // function isFavorite(id) {
+  //   const match = forecasts.find(item => Number(item.id) === Number(id));
+  //   return Boolean(match);
+  // }
   return (
     <>
       <div>
