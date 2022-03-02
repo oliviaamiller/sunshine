@@ -22,12 +22,17 @@ function App() {
     <Router>
       <div>
         {currentUser &&
+        <div className='top'>
+          <div className='title'>
+            <h2>sunshine</h2>
+          </div>
           <div className="nav-link">
             <NavLink to="/search">Search Page</NavLink>
-            <NavLink to="/searchdetail">Search Detail Page</NavLink>
             <NavLink to="/favorites">Favorites Page</NavLink>
             <button onClick={logOut}>Logout</button>
-          </div>}
+          </div>
+        </div>
+        }
       </div> 
       <div>
         <Switch>
