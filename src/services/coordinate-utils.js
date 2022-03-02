@@ -28,3 +28,9 @@ export function buildCoordsByDistance(lat, long, dist) {
   return coordObj;
 }
 
+export function getDistanceBetween(lat1, long1, lat2, long2) {
+  const distance = 0;
+
+  return distance;
+}
+
