@@ -47,7 +47,7 @@ function App() {
               : <SearchPage />
             }
           </Route>
-          <Route exact path="/searchdetail" >
+          <Route exact path="/searchdetail/:id" >
             {!currentUser
               ? <Redirect to="/" />
               : <SearchDetailPage />
