@@ -21,3 +21,10 @@ export async function logOut() {
 
   return window.location.href = '../';
 }
+
+export async function getFavorites() {
+  const response = await client
+    .from('favorite')
+    .select();
+  return checkError(response);
+}
