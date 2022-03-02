@@ -59,7 +59,6 @@ p, h1, h2, h3, h4, h5, h6 {
 .title h2{
   font-size: 4rem;
   color:var(--yellow);
-  text-shadow:1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black;
   text-transform: uppercase;
 }
 
@@ -69,13 +68,17 @@ p, h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
 }
 
-
 .nav-link {
   border: solid 1px blue;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.search form{
+  border: 1px solid salmon;
+  background-color: pink;
 }
 
 .locations {
