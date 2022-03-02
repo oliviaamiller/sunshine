@@ -6,6 +6,7 @@ import AuthPage from './AuthPage';
 import SearchPage from './SearchPage';
 import SearchDetailPage from './SearchDetailPage';
 import FavoritesPage from './FavoritesPage';
+import AboutPage from './AboutPage';
 
 
 function App() {
@@ -57,6 +58,12 @@ function App() {
             {!currentUser
               ? <Redirect to="/" />
               : <FavoritesPage />
+            }
+          </Route>
+          <Route exact path="/about" >
+            {!currentUser
+              ? <Redirect to="/" />
+              : <AboutPage />
             }
           </Route>
         </Switch>
