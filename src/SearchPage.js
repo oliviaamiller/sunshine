@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import LocationList from './LocationList';
 import { buildCoordsByDistance } from './services/coordinate-utils';
-import data from './data.js';
+import { getFavorites } from './services/fetch-utils';
 import { getLatLong, getWeather } from './services/api-utils';
 
 
@@ -11,6 +11,7 @@ export default function SearchPage() {
   // distance is in meters 321869m = 200mi
   const [distance, setDistance] = useState(321869);
   const [forecasts, setForecasts] = useState([]);
+  const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     async function fetch() {
@@ -31,6 +32,16 @@ export default function SearchPage() {
     const latLong = await getLatLong(userZip);
     setUserCoords(latLong);
   }
+
+  async function fetchAndRefresh() {
+    const favoriteList = await getFavorites();
+    setLocations(favoriteList);
+  }
+
+  useEffect(() => {
+    fetchAndRefresh();
+  }, []); 
+
   // function isFavorite(id) {
   //   const match = forecasts.find(item => Number(item.id) === Number(id));
   //   return Boolean(match);
@@ -45,7 +56,7 @@ export default function SearchPage() {
       </div>
       <div>
         <h3>Search Results</h3>
-        <LocationList locations={forecasts} />
+        <LocationList forecasts={forecasts} locations={locations}/>
       </div>
     </>
   );
