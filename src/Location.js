@@ -4,10 +4,20 @@ import './App.css';
 
 export default function Location({ location }) {
   console.log(location);
-
+ 
   return (
-    <div className='location'>
-      <p>{location.name}</p>
-    </div>
+    <> 
+      {
+        location.weather[0].main === 'Clear' &&
+        <div className='location'>
+          <p>{location.name}</p>
+          <p>{location.weather[0].main}</p>
+        </div>
+        
+
+      
+      }
+     
+    </>
   );
 }
