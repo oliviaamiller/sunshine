@@ -35,3 +35,11 @@ export async function addToFavorites(city) {
     .insert(city);
   return checkError(response);
 }
+
+export async function addUser(newUser) {
+  const response = await client
+    .from('users')
+    .insert(newUser);
+  
+  return checkError(response);
+}
