@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
-export default function SearchDetailPage({ location }) {
+
+
+export default function SearchDetailPage() {
   // const [locationDetails, setLocationDetails] = useState('');
   // const params = useParams();
-  console.log(location);
+  
   
   // useEffect(() => {
   //   const data = await (params.id);

@@ -1,9 +1,7 @@
 import React from 'react';
 import './App.css';
 import { addToFavorites, getFavorites } from './services/fetch-utils';
-import { Link } from 'react-router-dom';
 import { calculateDistanceAsCrowFlies } from './services/coordinate-utils';
-import FavoriteDetail from './FavoriteDetail';
 
 
 
@@ -26,7 +24,6 @@ export default function Location({ location, userCoords }) {
     };
     await addToFavorites(favoriteObj);
     await getFavorites(); 
-    console.log(favoriteObj);
   }
   
   function temp() {
