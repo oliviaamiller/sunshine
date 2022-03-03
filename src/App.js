@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect, NavLink } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { logOut, getUser } from './services/fetch-utils.js';
+import { useState } from 'react';
+import { logOut } from './services/fetch-utils.js';
 import AuthPage from './AuthPage';
 import SearchPage from './SearchPage';
 import SearchDetailPage from './SearchDetailPage';
@@ -25,6 +25,7 @@ function App() {
             <NavLink to="/search">Search Page</NavLink>
             <NavLink to="/favorites">Favorites Page</NavLink>
             <button onClick={logOut}>Logout</button>
+            <SearchDetailPage />
           </div>
         </div>
         }

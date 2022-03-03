@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import { signIn, signUp, addUser } from './services/fetch-utils.js';
+import { signIn, signUp, } from './services/fetch-utils.js';
+import './App.css';
 
 export default function AuthPage({ setCurrentUser }) {
   const [email, setEmail] = useState('');
@@ -31,30 +32,18 @@ export default function AuthPage({ setCurrentUser }) {
   }
     
   return (
-    <div>
-      <h3>Sunshine</h3>
-      <form onSubmit={handleSignIn}>
-        <label> Email
-          <input onChange={e => setEmail(e.target.value)} value={email} name='email' required type='email'/>
-        </label>
-        <label> Password
-          <input onChange={e => setPassword(e.target.value)} value={password} name='password' required type='password'/>
-        </label>
-        <button>SignIn</button>
-      </form>
-
-      <form onSubmit={handleSignUp}>
-        <label> Email
-          <input onChange={e => setEmail(e.target.value)} value={email} name='email' required type='email'/>
-        </label>
-        <label> Username
-          <input onChange={e => setUsername(e.target.value)} value={username} name='username' required type='text'/>
-        </label>
-        <label> Password
-          <input onChange={e => setPassword(e.target.value)} value={password} name='password' required type='password'/>
-        </label>
-        <button>SignUp</button>
-      </form>
+    <div className='auth'>
+      <p>Sunshine</p>
+      <div className='auth-form'>
+        <form onSubmit={handleSignIn}>
+          <input onChange={e => setEmail(e.target.value)} value={email} name='email' required type='email' placeholder='email'/>
+          <input onChange={e => setPassword(e.target.value)} value={password} name='password' required type='password' placeholder='password'/>
+          <div className='auth-buttons'>
+            <button type='submit'>Sign In</button>
+            <button type="button" onClick={handleSignUp}>Sign Up</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
