@@ -33,7 +33,7 @@ function App() {
         </div>
         }
       </div> 
-      <div>
+      <div className='yellow'>
         <Switch>
           <Route exact path="/">
             {currentUser
