@@ -56,7 +56,7 @@ export default function SearchPage() {
       </div>
       <div>
         <h3>Search Results</h3>
-        <LocationList locations={forecasts} />
+        <LocationList locations={forecasts} userCoords={userCoords} />
       </div>
     </>
   );

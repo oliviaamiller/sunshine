@@ -13,12 +13,6 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('supabase.auth.token'));
 
-           
-
-
-
-  
-
   return (
     <Router>
       <div>
@@ -33,13 +27,9 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/">
-
             {currentUser
               ? <Redirect to="/search" />
               : <AuthPage setCurrentUser={setCurrentUser} />
-
-            
-
             }
           </Route>
           <Route exact path="/search" >
@@ -69,7 +59,6 @@ function App() {
         </Switch>
       </div>
     </Router>
- 
   );
 }
 
