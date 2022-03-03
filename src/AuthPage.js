@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { signIn, signUp, } from './services/fetch-utils.js';
+import { signIn, signUp, addUser } from './services/fetch-utils.js';
 
 export default function AuthPage({ setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
     
   async function handleSignIn(e) {
     e.preventDefault();
@@ -14,10 +15,19 @@ export default function AuthPage({ setCurrentUser }) {
     setCurrentUser(user);
   }
     
-  async function handleSignUp() {
+  async function handleSignUp(e) {
+    e.preventDefault();
+
     const user = await signUp(email, password);
 
     setCurrentUser(user);
+
+    const newUser = {
+      email,
+      username
+    };
+
+    await addUser(newUser);
   }
     
   return (
@@ -32,7 +42,19 @@ export default function AuthPage({ setCurrentUser }) {
         </label>
         <button>SignIn</button>
       </form>
-      <button type="button" onClick={handleSignUp}>SignUp</button>
+
+      <form onSubmit={handleSignUp}>
+        <label> Email
+          <input onChange={e => setEmail(e.target.value)} value={email} name='email' required type='email'/>
+        </label>
+        <label> Username
+          <input onChange={e => setUsername(e.target.value)} value={username} name='username' required type='text'/>
+        </label>
+        <label> Password
+          <input onChange={e => setPassword(e.target.value)} value={password} name='password' required type='password'/>
+        </label>
+        <button>SignUp</button>
+      </form>
     </div>
   );
 }

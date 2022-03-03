@@ -22,10 +22,11 @@ export async function logOut() {
   return window.location.href = '../';
 }
 
-export async function getFavorites() {
+export async function getFavorites(id) {
   const response = await client
     .from('favorite')
-    .select();
+    .select()
+    .match({ user_id: id });
   return checkError(response);
 }
 
@@ -33,5 +34,13 @@ export async function addToFavorites(city) {
   const response = await client
     .from('favorite')
     .insert(city);
+  return checkError(response);
+}
+
+export async function addUser(newUser) {
+  const response = await client
+    .from('users')
+    .insert(newUser);
+  
   return checkError(response);
 }
