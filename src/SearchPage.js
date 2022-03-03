@@ -8,7 +8,7 @@ export default function SearchPage() {
   const [userZip, setUserZip] = useState('');
 
   const [userCoords, setUserCoords] = useState({});
-
+  //eslint-disable-next-line
   const [distanceInkm, setDistanceInkm] = useState(200);
   const [forecasts, setForecasts] = useState([]);
 

@@ -1,8 +1,6 @@
 import React from 'react';
-import { getFavorites } from './services/fetch-utils';
 
 export default function FavoriteItem({ location }) {
-  console.log(location);
   return (
     <div className='location'>
       <p>{location.city_name}</p>
