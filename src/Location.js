@@ -28,16 +28,13 @@ export default function Location({ location, userCoords }) {
   }
 
   return (
-    <>
-      <Link to={`/searchdetail/${location.id}`}>
-        <div title="location" className='location' onClick={handleClick} >
-          <p>{location.name}</p>
-          <p>{location.weather[0].main && 'Sunny'}</p>
-          <p>{temp()} °F</p>
-          <p>{`${Math.round(distanceFromUser)} km from you`}</p>
-        </div>
-      </Link>
-      
-    </>
+
+    <div title="location" className='location' onClick={handleClick} >
+      <p>{location.name}</p>
+      <p>{location.coord.lat}, {location.coord.lon}</p>
+      <p>{location.weather[0].main && 'Sunny'}</p>
+      <p>{temp()} °F</p>
+      <p>{`${Math.round(distanceFromUser)} km from you`}</p>
+    </div>
   );
 }
