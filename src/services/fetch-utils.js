@@ -22,10 +22,11 @@ export async function logOut() {
   return window.location.href = '../';
 }
 
-export async function getFavorites() {
+export async function getFavorites(id) {
   const response = await client
     .from('favorite')
-    .select();
+    .select()
+    .match({ user_id: id });
   return checkError(response);
 }
 
