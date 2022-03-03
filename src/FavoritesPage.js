@@ -7,7 +7,6 @@ export default function FavoritesPage() {
 
   async function fetchAndRefresh() {
     const user = await getUser();
-    console.log(user);
     const favoriteList = await getFavorites(user);
     setLocations(favoriteList);
   }

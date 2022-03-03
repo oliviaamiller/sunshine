@@ -1,4 +1,4 @@
-test('renders learn react link', () => {
+test('this is true', () => {
   const linkElement = true;
   expect(linkElement).toBeTruthy();
 });
