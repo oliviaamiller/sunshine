@@ -48,13 +48,13 @@ export default function SearchPage() {
   // }
   return (
     <>
-      <div>
+      <div className='search'>
         <form onSubmit={handleSubmit}>
           <input placeholder='Current Location' value={userZip} onChange={e => setUserZip(e.target.value)} />
           <button type='submit'>Search</button>
         </form>
       </div>
-      <div>
+      <div className='results'>
         <h3>Search Results</h3>
         <LocationList locations={forecasts} />
       </div>

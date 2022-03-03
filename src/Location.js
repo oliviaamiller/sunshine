@@ -29,6 +29,7 @@ export default function Location({ location }) {
 
     <div title="location" className='location' onClick={handleClick} >
       <p>{location.name}</p>
+      <p>{location.coord.lat}, {location.coord.lon}</p>
       <p>{location.weather[0].main && 'Sunny'}</p>
       <p>{temp()} °F</p>
     </div>

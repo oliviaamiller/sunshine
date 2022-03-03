@@ -24,7 +24,7 @@ function App() {
         {currentUser &&
         <div className='top'>
           <div className='title'>
-            <h2>sunshine</h2>
+            <p>sunshine</p>
           </div>
           <div className="nav-link">
             <NavLink to="/search">Search Page</NavLink>
