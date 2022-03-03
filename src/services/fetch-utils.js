@@ -1,7 +1,7 @@
 import { client, checkError } from './client';
 
 export async function getUser() {
-  return client.auth.session;
+  return client.auth.session() && client.auth.session().user;
 }
 
 export async function signUp(email, password) {
@@ -22,11 +22,11 @@ export async function logOut() {
   return window.location.href = '../';
 }
 
-export async function getFavorites(id) {
+export async function getFavorites() {
   const response = await client
     .from('favorite')
-    .select()
-    .match({ user_id: id });
+    .select();
+    
   return checkError(response);
 }
 
