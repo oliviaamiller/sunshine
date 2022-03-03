@@ -3,7 +3,7 @@ import './App.css';
 import { addToFavorites, getFavorites } from './services/fetch-utils';
 import { Link } from 'react-router-dom';
 import { calculateDistanceAsCrowFlies } from './services/coordinate-utils';
-import SearchDetailPage from './SearchDetailPage';
+import FavoriteDetail from './FavoriteDetail';
 
 
 
@@ -15,7 +15,14 @@ export default function Location({ location, userCoords }) {
       city_name: location.name,
       lat: location.coord.lat,
       long: location.coord.lon,
-      city_id: location.id
+      city_id: location.id,
+      temp: location.main.temp,
+      temp_min: location.main.temp_min,
+      temp_max: location.main.temp_max,
+      feels_like: location.main.feels_like,
+      humidity: location.main.humidity,
+      wind_speed: location.wind.speed,
+      date: location.dt,
     };
     await addToFavorites(favoriteObj);
     await getFavorites(); 

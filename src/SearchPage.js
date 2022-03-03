@@ -5,7 +5,7 @@ import { getLatLong, getWeather } from './services/api-utils';
 
 
 export default function SearchPage() {
-  const [userZip, setUserZip] = useState('97215');
+  const [userZip, setUserZip] = useState('');
   const [userCoords, setUserCoords] = useState({});
 
   const [distanceInkm, setDistanceInkm] = useState(200);
@@ -35,7 +35,7 @@ export default function SearchPage() {
     <>
       <div className='search'>
         <form onSubmit={handleSubmit}>
-          <input placeholder='Current Location' value={userZip} onChange={e => setUserZip(e.target.value)} />
+          <input placeholder='Your Zipcode' value={userZip} onChange={e => setUserZip(e.target.value)} />
           <button type='submit'>Search</button>
         </form>
       </div>
