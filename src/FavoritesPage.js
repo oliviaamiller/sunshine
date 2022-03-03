@@ -17,8 +17,7 @@ export default function FavoritesPage() {
   }, []); 
 
   return (
-    <div>
-      <h3>My Favorites</h3>
+    <div className='favorites-page'>
       <LocationList locations={locations} fetchAndRefresh={fetchAndRefresh} />
     </div>
   );

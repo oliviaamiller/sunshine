@@ -1,8 +1,10 @@
 :root {
-  --yellow: #f7d40b;
+  --yellow: #f8d40d;
   --blue: #75ACD5;
   --orange: #f9b43d;
-  --red: #f98da6;
+  --red: #f98ba4;
+  --lightred: hsl(346, 90%, 90%);
+  --lightyellow: #fdf2b5;
 }
 
 
@@ -91,6 +93,7 @@ p, h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   font-style: italic;
   letter-spacing: .05rem;
+  border-radius: 3px;
 }
 
 .auth p { 
@@ -111,7 +114,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .top a:link {
   color: var(--title);
-  margin: .5rem .8rem;
+  margin: 0rem .8rem;
   text-decoration: none;
   cursor: pointer;
 }
@@ -122,7 +125,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 .title p{
   font-family: 'Shrikhand', cursive;
-  font-size: 4rem;
+  font-size: 3.7rem;
   color:var(--yellow);
   text-transform: uppercase;
   text-align: center;
@@ -165,7 +168,6 @@ p, h1, h2, h3, h4, h5, h6 {
   font-style: italic;
 }
 
-
 .search button{
   background-color: var(--orange);
   border: 1px solid white;
@@ -176,7 +178,7 @@ p, h1, h2, h3, h4, h5, h6 {
   letter-spacing: .05rem;
 }
 
-.results {
+.results, .favorites-page {
   background-color: var(--yellow);
   display: flex;
   flex-direction: column;
@@ -191,6 +193,11 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  font-family: 'Source Serif 4', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: .1rem;
+  margin-top: 2rem;
   /* display: grid;
   justify-items: center;
   grid-template-columns: repeat(auto-fit, 186px);;
@@ -199,10 +206,14 @@ p, h1, h2, h3, h4, h5, h6 {
   row-gap: 0; */
 }
 
+.location p:first-child {
+  font-weight: 900;
+}
+
 .location {
   cursor: pointer;
   position: relative;
-  background-color: white;
+  background-color: var(--lightyellow);
   border: black 1px solid;
   color: black;
   text-align: center;
@@ -210,16 +221,10 @@ p, h1, h2, h3, h4, h5, h6 {
   height: fit-content;
   width: 20rem;
   margin: 1rem;
-  background-image: url('./sun.jpg');
-  background-size: cover;
+  border-radius: 4px;
 }
 
-.location::before {
-  content: '';
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: ;
+.active-nav {
+  background-color: var(--blue);
+  padding: .5em;
 }
-

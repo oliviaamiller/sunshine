@@ -4,7 +4,7 @@ import { getFavorites } from './services/fetch-utils';
 export default function FavoriteItem({ location }) {
   console.log(location);
   return (
-    <div>
+    <div className='location'>
       <p>{location.city_name}</p>
       <p>{location.lat}, {location.long}</p>
       {/* <p>{location.weather[0].main && 'Sunny'}</p> */}
