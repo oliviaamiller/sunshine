@@ -41,12 +41,12 @@ export default function SearchDetailPage() {
 
 
   return (
-    <div>
+    <div className='location'>
       <h3>{locationDetails.city_name}</h3>
       <p>{date(locationDetails.date)}</p>
-      <p>Current temperature: {temp1()} °F</p>
-      <p>Feels like: {temp2()} °F</p>
-      <p>Max/min temps: {tempmax()} °F / {tempmin()} °F</p>
+      <p>Current Temperature: {temp1()} °F</p>
+      <p>Feels Like: {temp2()} °F</p>
+      <p>Max/min Temp: {tempmax()} °F / {tempmin()} °F</p>
       <p>Humidity: {locationDetails.humidity}%</p>
       <p>Wind Speed: {locationDetails.wind_speed}</p>
 
