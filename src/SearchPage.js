@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import LocationList from './LocationList';
 import { buildCoordsByDistance } from './services/coordinate-utils';
-// import { getFavorites } from './services/fetch-utils';
 import { getLatLong, getWeather } from './services/api-utils';
 
 
@@ -11,7 +10,6 @@ export default function SearchPage() {
 
   const [distanceInkm, setDistanceInkm] = useState(200);
   const [forecasts, setForecasts] = useState([]);
-  // const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     async function fetch() {
@@ -33,19 +31,6 @@ export default function SearchPage() {
     setUserCoords(latLong);
   }
 
-  // async function fetchAndRefresh() {
-  //   const favoriteList = await getFavorites();
-  //   setLocations(favoriteList);
-  // }
-
-  // useEffect(() => {
-  //   fetchAndRefresh();
-  // }, []); 
-
-  // function isFavorite(id) {
-  //   const match = forecasts.find(item => Number(item.id) === Number(id));
-  //   return Boolean(match);
-  // }
   return (
     <>
       <div className='search'>
@@ -55,7 +40,6 @@ export default function SearchPage() {
         </form>
       </div>
       <div className='results'>
-        <h3>Search Results</h3>
         <LocationList locations={forecasts} userCoords={userCoords} />
       </div>
     </>

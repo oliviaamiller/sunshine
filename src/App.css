@@ -41,6 +41,69 @@ p, h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 }
 
+.auth {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('./sun.jpg');
+  background-size: cover;
+  height: 100vh;
+}
+
+.auth-form {
+  background-color: var(--yellow);
+  border: black .065rem solid;
+  width: 16rem;
+  height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+}
+
+.auth form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.auth input {
+  color: var(--blue);
+  margin-bottom: .6rem;
+  border: none;
+  font-family: 'Source Serif 4', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.auth input::placeholder {
+  color: var(--blue);
+}
+
+.auth-buttons button {
+  margin: 0rem .5rem;
+  background-color: var(--blue);
+  border: none;
+  text-transform: lowercase;
+  font-family: 'Source Serif 4', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .05rem;
+}
+
+.auth p { 
+  font-family: 'Shrikhand', cursive;
+  font-size: 3rem;
+  color:var(--yellow);
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: .2rem;
+  -webkit-text-stroke: 1px black;
+  margin-top: 8rem;
+}
+
 .top{
   background-color: var(--blue);
   width: 100%;
@@ -62,15 +125,23 @@ p, h1, h2, h3, h4, h5, h6 {
   font-size: 4rem;
   color:var(--yellow);
   text-transform: uppercase;
+  text-align: center;
+  letter-spacing: .2rem;
+  -webkit-text-stroke: 1px black;
 }
 
 .top button {
   background-color: var(--red);
   border: none;
   cursor: pointer;
+  letter-spacing: .1rem;
 }
 
 .nav-link {
+  font-family: 'Source Serif 4', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .1rem;
   background-color: var(--red);
   display: flex;
   flex-direction: row;
@@ -86,11 +157,23 @@ p, h1, h2, h3, h4, h5, h6 {
   padding: .5rem;
 }
 
-.search button{
-  background-color: var(--blue);
+.search input {
   border: none;
-  padding: .15rem;
+  padding: .12rem;
+  font-family: 'Source Serif 4', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+
+.search button{
+  background-color: var(--orange);
+  border: 1px solid white;
   text-transform: lowercase;
+  font-family: 'Source Serif 4', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .05rem;
 }
 
 .results {
@@ -117,12 +200,25 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .location {
+  position: relative;
   background-color: white;
-  color: var(--red);
+  border: black 1px solid;
+  color: black;
   text-align: center;
   padding: 1rem;
-  height: 8rem;
+  height: fit-content;
   width: 20rem;
   margin: 1rem;
+  background-image: url('./sun.jpg');
+  background-size: cover;
+}
+
+.location::before {
+  content: '';
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: ;
 }
 
