@@ -37,6 +37,15 @@ export async function addToFavorites(city) {
   return checkError(response);
 }
 
+export async function getSingleLocation(id) {
+  const response = await client
+    .from('favorite')
+    .select()
+    .match({ id })
+    .single();
+  return checkError(response);
+}
+
 export async function addUser(newUser) {
   const response = await client
     .from('users')

@@ -26,9 +26,6 @@ function App() {
             <NavLink to="/favorites" activeClassName='active-nav'>Favorites</NavLink>
             <NavLink to="/about" activeClassName='active-nav'>About</NavLink>
             <button onClick={logOut}>Logout</button>
-            <FavoriteDetail
-            />
-             
           </div>
         </div>
         }
@@ -47,7 +44,7 @@ function App() {
               : <SearchPage />
             }
           </Route>
-          <Route exact path="/favoritedetail" >
+          <Route exact path="/favoritedetail/:id" >
             {!currentUser
               ? <Redirect to="/" />
               : <FavoriteDetail
