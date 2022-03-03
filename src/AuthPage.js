@@ -22,13 +22,6 @@ export default function AuthPage({ setCurrentUser }) {
     const user = await signUp(email, password);
 
     setCurrentUser(user);
-
-    const newUser = {
-      email,
-      username
-    };
-
-    await addUser(newUser);
   }
     
   return (
