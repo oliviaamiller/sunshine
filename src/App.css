@@ -123,6 +123,7 @@ p, h1, h2, h3, h4, h5, h6 {
   color: var(--title);
   text-decoration: none;
 }
+
 .title p{
   font-family: 'Shrikhand', cursive;
   font-size: 3.7rem;
@@ -158,6 +159,7 @@ p, h1, h2, h3, h4, h5, h6 {
   flex-direction: row;
   justify-content: center;
   padding: .5rem;
+  width: 100%;
 }
 
 .search input {
@@ -178,7 +180,7 @@ p, h1, h2, h3, h4, h5, h6 {
   letter-spacing: .05rem;
 }
 
-.results, .favorites-page {
+.yellow {
   background-color: var(--yellow);
   display: flex;
   flex-direction: column;
@@ -186,9 +188,31 @@ p, h1, h2, h3, h4, h5, h6 {
   align-items: center;
   overflow: scroll;
   height: 100vh;
+  width: 100vw;
 }
 
-.locations {
+.yellow p {
+  font-family: 'Source Serif 4', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: .05rem;
+  margin: 1rem;
+}
+
+.yellow a:link {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.yellow a:visited { 
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.locations, .aboutpage {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -212,6 +236,19 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .location {
   cursor: pointer;
+  position: relative;
+  background-color: var(--lightyellow);
+  border: black 1px solid;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+  height: fit-content;
+  width: 20rem;
+  margin: 1rem;
+  border-radius: 4px;
+}
+
+.about-card {
   position: relative;
   background-color: var(--lightyellow);
   border: black 1px solid;
