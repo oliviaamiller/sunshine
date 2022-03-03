@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { logOut } from './services/fetch-utils.js';
 import AuthPage from './AuthPage';
 import SearchPage from './SearchPage';
-import SearchDetailPage from './SearchDetailPage';
+import FavoriteDetail from './FavoriteDetail';
 import FavoritesPage from './FavoritesPage';
 import AboutPage from './AboutPage';
 
@@ -26,7 +26,9 @@ function App() {
             <NavLink to="/favorites" activeClassName='active-nav'>Favorites</NavLink>
             <NavLink to="/about" activeClassName='active-nav'>About</NavLink>
             <button onClick={logOut}>Logout</button>
-            <SearchDetailPage />
+            <FavoriteDetail
+            />
+             
           </div>
         </div>
         }
@@ -45,10 +47,11 @@ function App() {
               : <SearchPage />
             }
           </Route>
-          <Route exact path="/searchdetail/:id" >
+          <Route exact path="/favoritedetail" >
             {!currentUser
               ? <Redirect to="/" />
-              : <SearchDetailPage />
+              : <FavoriteDetail
+              />
             }
           </Route>
           <Route exact path="/favorites" >
