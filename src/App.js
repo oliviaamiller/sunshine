@@ -22,8 +22,9 @@ function App() {
             <p>sunshine</p>
           </div>
           <div className="nav-link">
-            <NavLink to="/search">Search Page</NavLink>
-            <NavLink to="/favorites">Favorites Page</NavLink>
+            <NavLink to="/search">Search</NavLink>
+            <NavLink to="/favorites">Favorites</NavLink>
+            <NavLink to="/about">About</NavLink>
             <button onClick={logOut}>Logout</button>
             <SearchDetailPage />
           </div>
