@@ -6,17 +6,12 @@ import AuthPage from './AuthPage';
 import SearchPage from './SearchPage';
 import SearchDetailPage from './SearchDetailPage';
 import FavoritesPage from './FavoritesPage';
+import AboutPage from './AboutPage';
 
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState(localStorage.getItem('supabase.auth.token'));
-
-           
-
-
-
-  
 
   return (
     <Router>
@@ -37,13 +32,9 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/">
-
             {currentUser
               ? <Redirect to="/search" />
               : <AuthPage setCurrentUser={setCurrentUser} />
-
-            
-
             }
           </Route>
           <Route exact path="/search" >
@@ -52,7 +43,7 @@ function App() {
               : <SearchPage />
             }
           </Route>
-          <Route exact path="/searchdetail" >
+          <Route exact path="/searchdetail/:id" >
             {!currentUser
               ? <Redirect to="/" />
               : <SearchDetailPage />
@@ -64,10 +55,15 @@ function App() {
               : <FavoritesPage />
             }
           </Route>
+          <Route exact path="/about" >
+            {!currentUser
+              ? <Redirect to="/" />
+              : <AboutPage />
+            }
+          </Route>
         </Switch>
       </div>
     </Router>
- 
   );
 }
 
