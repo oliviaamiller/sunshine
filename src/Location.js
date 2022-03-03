@@ -15,10 +15,11 @@ export default function Location({ location, userCoords }) {
       city_name: location.name,
       lat: location.coord.lat,
       long: location.coord.lon,
+      city_id: location.id
     };
     await addToFavorites(favoriteObj);
     await getFavorites(); 
-    
+    console.log(favoriteObj);
   }
   
   function temp() {

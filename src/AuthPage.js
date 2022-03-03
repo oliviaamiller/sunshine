@@ -6,6 +6,7 @@ import './App.css';
 export default function AuthPage({ setCurrentUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
     
   async function handleSignIn(e) {
     e.preventDefault();
@@ -15,10 +16,19 @@ export default function AuthPage({ setCurrentUser }) {
     setCurrentUser(user);
   }
     
-  async function handleSignUp() {
+  async function handleSignUp(e) {
+    e.preventDefault();
+
     const user = await signUp(email, password);
 
     setCurrentUser(user);
+
+    const newUser = {
+      email,
+      username
+    };
+
+    await addUser(newUser);
   }
     
   return (
@@ -34,7 +44,6 @@ export default function AuthPage({ setCurrentUser }) {
           </div>
         </form>
       </div>
-      
     </div>
   );
 }
