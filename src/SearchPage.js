@@ -43,7 +43,7 @@ export default function SearchPage() {
       <div className='results'>
         {forecasts.length
           ? <LocationList locations={forecasts} userCoords={userCoords} /> 
-          : <p>Enter your ZIP Code and click search to get your list of sunny locations within 200 km of you!</p>
+          : <p>Enter your ZIP Code and click search to get a list of sunny locations within 200 km of you!</p>
         }
       </div>
     </>
