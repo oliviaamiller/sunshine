@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import LocationList from './LocationList';
 import { buildCoordsByDistance } from './services/coordinate-utils';
 import { getLatLong, getWeather } from './services/api-utils';
+import Spinner from './Spinner';
 
 
 export default function SearchPage() {
   const [userZip, setUserZip] = useState('');
-
+  const [isLoading, setIsLoading] = useState(false);
   const [userCoords, setUserCoords] = useState({});
   //eslint-disable-next-line
   const [distanceInkm, setDistanceInkm] = useState(200);
@@ -18,6 +19,7 @@ export default function SearchPage() {
       const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long));
       const weatherArray = await Promise.all(promises);
       setForecasts(weatherArray);
+      setIsLoading(false);
     }
 
     if (userCoords.lat) {
@@ -27,6 +29,7 @@ export default function SearchPage() {
   }, [userCoords, distanceInkm]);
 
   async function handleSubmit(e) {
+    setIsLoading(true);
     e.preventDefault();
     const latLong = await getLatLong(userZip);
     setUserCoords(latLong);
@@ -41,6 +44,7 @@ export default function SearchPage() {
         </form>
       </div>
       <div className='results'>
+        { isLoading && <Spinner/>}
         {forecasts.length
           ? <LocationList locations={forecasts} userCoords={userCoords} /> 
           : <p>Enter your ZIP Code and click search to get a list of sunny locations within 200 km of you!</p>
