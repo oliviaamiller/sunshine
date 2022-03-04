@@ -12,7 +12,7 @@ export async function getWeather(lat, long) {
 }
 
 export async function getFiveDayWeather(lat, long) {
-  const response = await fetch(`/.netlify/functions/5day-weather-endpoint?lat=${lat}&long=${long}`);
+  const response = await fetch(`/.netlify/functions/five-day-weather-endpoint?lat=${lat}&long=${long}`);
   const responseJson = await response.json();
   return responseJson;
 }

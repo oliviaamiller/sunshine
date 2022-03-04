@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getSingleLocation } from './services/fetch-utils';
 import { getFiveDayWeather } from './services/api-utils';
 
-export default function SearchDetailPage() {
+export default function FavoriteDeatil() {
   const [locationDetails, setLocationDetails] = useState('');
   const [fiveDayForecast, setFiveDayForcast] = useState([]);
   const params = useParams();
@@ -13,14 +13,20 @@ export default function SearchDetailPage() {
       const data = await getSingleLocation(params.id);
       setLocationDetails(data);
 
-      // const promises = await getFiveDayWeather(locationDetails.lat, locationDetails.long);
+      console.log(locationDetails);
+
+      const fiveDay = await getFiveDayWeather(locationDetails.lat, locationDetails.long);
       
-      // const forecastArray = await Promise.all(promises);
-      // setFiveDayForcast(forecastArray);
+      setFiveDayForcast(fiveDay);
+
+      console.log(fiveDay);
 
     }
-    fetch();
-  }, [params.id, locationDetails.lat, locationDetails.long]);
+    if (!locationDetails.lat){
+      fetch();
+    }
+   
+  }, [params.id, locationDetails]);
 
   function currentTemp() {
     let f = 1.8 * (
@@ -50,7 +56,7 @@ export default function SearchDetailPage() {
 
   return (
     <div className='location'>
-      <h3>{locationDetails.city_name}</h3>
+      <p>{locationDetails.city_name}</p>
       <p>{date(locationDetails.date)}</p>
       <p>Current Temperature: {currentTemp()} °F</p>
       <p>Feels Like: {feelsLike()} °F</p>
