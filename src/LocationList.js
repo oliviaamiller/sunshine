@@ -16,7 +16,7 @@ export default function LocationList({ locations, fetchAndRefresh, userCoords })
         {
           clearLocations.length
             ? clearLocations.map((location, i) => <Location key={`${location}-${i}`} location={location} userCoords={userCoords} />)
-            : <p className='shorten'>It does not look like any locations within 200 kim of you are sunny at the moment. May we recommmend <a href="https://nymag.com/strategist/article/best-sad-lamps.html" target="_blank" rel="noreferrer">An At-Home Sunshine Device</a>.
+            : <p className='shorten'>It does not look like any locations within 200 km of you are sunny at the moment. May we recommmend <a href="https://nymag.com/strategist/article/best-sad-lamps.html" target="_blank" rel="noreferrer">An At-Home Sunshine Device</a>.
             </p>
         }
       </div>
