@@ -34,33 +34,33 @@ export default function FavoriteDeatil() {
     if (!futureForecast.current && locationDetails.lat){
       fetchFuture();
     }
-  }, [futureForecast.current, locationDetails.lat, locationDetails.long]);
+  }, [futureForecast, locationDetails.lat, locationDetails.long]);
 
 
-  function currentTemp() {
-    let f = 1.8 * (
-      `${locationDetails.temp}` - 273) + 32;
-    return Math.round(f);
-  }
-  function feelsLike() {
-    let f = 1.8 * (
-      `${locationDetails.feels_like}` - 273) + 32;
-    return Math.round(f);
-  }
-  function tempmin() {
-    let f = 1.8 * (
-      `${locationDetails.temp_min}` - 273) + 32;
-    return Math.round(f);
-  }
-  function tempmax() {
-    let f = 1.8 * (
-      `${locationDetails.temp_max}` - 273) + 32;
-    return Math.round(f);
-  }
+  // function currentTemp() {
+  //   let f = 1.8 * (
+  //     `${locationDetails.temp}` - 273) + 32;
+  //   return Math.round(f);
+  // }
+  // function feelsLike() {
+  //   let f = 1.8 * (
+  //     `${locationDetails.feels_like}` - 273) + 32;
+  //   return Math.round(f);
+  // }
+  // function tempmin() {
+  //   let f = 1.8 * (
+  //     `${locationDetails.temp_min}` - 273) + 32;
+  //   return Math.round(f);
+  // }
+  // function tempmax() {
+  //   let f = 1.8 * (
+  //     `${locationDetails.temp_max}` - 273) + 32;
+  //   return Math.round(f);
+  // }
 
-  function date(dt) {
-    return new Date(dt * 1000).toUTCString();
-  }
+  // function date(dt) {
+  //   return new Date(dt * 1000).toUTCString();
+  // }
 
   function newDate(dt) {
     const date = new Date(dt * 1000);
@@ -73,9 +73,6 @@ export default function FavoriteDeatil() {
     return `${day} ${month} ${dayNum}, ${year}`;
   }
 
-  
-
-  console.log(futureForecast);
 
   if (futureForecast.lat) {
     return (
