@@ -97,14 +97,14 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .auth p { 
-  font-family: 'Shrikhand', cursive;
-  font-size: 3rem;
-  color:var(--yellow);
-  text-transform: uppercase;
+  font-family: 'Shrikhand', cursive!important;
+  font-size: 3rem!important;
+  color:var(--yellow)!important;
+  text-transform: uppercase!important;
   text-align: center;
-  letter-spacing: .2rem;
+  letter-spacing: .2rem!important;
   -webkit-text-stroke: 1px black;
-  margin-top: 8rem;
+  margin-top: 8rem!important;
 }
 
 .top{
