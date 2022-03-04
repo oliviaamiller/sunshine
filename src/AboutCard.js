@@ -6,7 +6,6 @@ export default function AboutCard({ person }) {
       <p>{person.firstName} {person.lastName}</p>
       <p>{person.bio}</p>
       <p>{person.favoriteSpot}</p>
-      <p>{person.image}</p>
     </div>
   );
 }
