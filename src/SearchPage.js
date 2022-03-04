@@ -47,7 +47,7 @@ export default function SearchPage() {
         { isLoading && <Spinner/>}
         {forecasts.length
           ? <LocationList locations={forecasts} userCoords={userCoords} /> 
-          : <p>Enter your ZIP Code and click search to get a list of sunny locations within 200 km of you!</p>
+          : <p className='shorten'>Enter your ZIP Code and click search to get a list of sunny locations within 200 km of you! Click on a location to add it to your favorites list.</p>
         }
       </div>
     </>
