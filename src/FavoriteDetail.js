@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSingleLocation } from './services/fetch-utils';
 import { getFutureWeather } from './services/api-utils';
+import WeatherDetails from './WeatherDetails';
 
-export default function FavoriteDeatil() {
+export default function FavoriteDetail() {
   const [locationDetails, setLocationDetails] = useState('');
   const [futureForecast, setFutureForecast] = useState([]);
   const params = useParams();
@@ -62,16 +63,7 @@ export default function FavoriteDeatil() {
   //   return new Date(dt * 1000).toUTCString();
   // }
 
-  function newDate(dt) {
-    const date = new Date(dt * 1000);
-    const month = months[date.getUTCMonth()];
-    const day = days[date.getUTCDay()];
-    const dayNum = [date.getUTCDate()];
-    const year = [date.getUTCFullYear()];
-
-
-    return `${day} ${month} ${dayNum}, ${year}`;
-  }
+  
 
 
   if (futureForecast.lat) {
@@ -79,9 +71,10 @@ export default function FavoriteDeatil() {
 
       <div className='location'>
         <p>{locationDetails.city_name}</p>
-        <p>{newDate(1646337600)}</p>
-        <p>{futureForecast.daily[0].temp.day} °F</p>
-  
+        {
+          futureForecast.daily.map((day, i) => <WeatherDetails key={`${day.dt} + ${i}`} dayForecast={day} months={months} days={days}/>)
+        }
+
       </div>
     );
   } else { return null; }
