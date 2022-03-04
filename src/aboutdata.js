@@ -17,7 +17,7 @@ export default [
     firstName: 'Olivia',
     lastName: 'Miller',
     bio: 'I\'m Olivia!',
-    favoriteSpot: 'My favorite spot to soak up some sun is ',
+    favoriteSpot: '',
     image: 'this is the path to my image'
   },
   {
