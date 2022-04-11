@@ -1,9 +1,24 @@
 import React from 'react';
 
-export default function WeatherDetails({ dayForecast, months, days }) {
+// if they aren't state, arrays should live outside the component in case you want to export and reuse them elsewhere
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
+
+export default function WeatherDetails({ 
+  // here's some fancy, deep destructuring if you're interested
+  dayForecast: {
+  dt,
+    temp: {
+      morn,
+      day, 
+      eve
+    },
+  weather: [ { main } ]
+}, 
+ }) {
 
 
-  function newDate(dt) {
+  function getNewDate(dt) { // i like function names to be verbs
     const date = new Date(dt * 1000);
     const month = months[date.getUTCMonth()];
     const day = days[date.getUTCDay()];
@@ -13,16 +28,17 @@ export default function WeatherDetails({ dayForecast, months, days }) {
 
     return `${day} ${month} ${dayNum}, ${year}`;
   }
+
   return (
     <div className='daily-weather-card'>
-      <p>{newDate(dayForecast.dt)}</p>
+      <p>{getNewDate(dt)}</p>
       <p>Temps:</p>
-      <p>Morning {dayForecast.temp.morn} °F</p>
-      <p>Daytime {dayForecast.temp.day} °F</p>
-      <p>Evening {dayForecast.temp.eve} °F</p>
-      <p>{dayForecast.weather[0].main === 'Clear' 
+      <p>Morning {morn} °F</p>
+      <p>Daytime {day} °F</p>
+      <p>Evening {eve} °F</p>
+      <p>{main === 'Clear' 
         ? 'Sunny!' 
-        : dayForecast.weather[0].main} with {dayForecast.weather[0].description}</p>
+        : main} with {description}</p>
       
     </div>
   );

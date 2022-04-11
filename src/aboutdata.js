@@ -1,7 +1,9 @@
+// nice work recognizing that this data makes more sense as json! most groups tend to hard code this in the AboutUs page, but you found the better solution
 export default [
   {
     firstName: 'Clare',
     lastName: 'McDonald',
+    // very cool that you figured out escaping the apostrophe here
     bio: 'I\'m Clare! I’m a full-stack software developer from Eugene, OR. I like to watch my cats soaking up the sun from their windows.',
     favoriteSpot: 'My favorite spot to soak up some sun is at the beach in Florence, OR.',
     image: 'this is the path to my image'

@@ -6,13 +6,10 @@ import WeatherDetails from './WeatherDetails';
 import Spinner from './Spinner';
 
 export default function FavoriteDetail() {
+  const params = useParams();
   const [locationDetails, setLocationDetails] = useState('');
   const [futureForecast, setFutureForecast] = useState([]);
-  const params = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
   
   useEffect(() => {
     async function fetchSupabase() {
@@ -20,7 +17,7 @@ export default function FavoriteDetail() {
       setLocationDetails(data);
     }
 
-   
+   // nice! so only make the fetch if there is no data, to account for page changing?
     if (!locationDetails.lat){
       fetchSupabase();
     }
@@ -50,15 +47,15 @@ export default function FavoriteDetail() {
           : <>
             <p>{locationDetails.city_name}</p>
           
-            {futureForecast.daily.map((day, i) => <WeatherDetails key={`${day.dt} + ${i}`} dayForecast={day} months={months} days={days}/>)}
+          {/* no need for these to be props, since they never change. might as well just define this array in WeatherDetails */}
+            {futureForecast.daily.map((day, i) => <WeatherDetails key={`${day.dt} + ${i}`} dayForecast={day}/>)}
           </>
-              
-        
-          
         }
       </div>
      
       
     );
-  } else { return null; }
+  } else { 
+    return null; 
+  }
 }

@@ -4,18 +4,19 @@ import { buildCoordsByDistance } from './services/coordinate-utils';
 import { getLatLong, getWeather } from './services/api-utils';
 import Spinner from './Spinner';
 
+// if this never changes, it doesn't need to be state
+const distanceInkm = 200;
 
 export default function SearchPage() {
   const [userZip, setUserZip] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [userCoords, setUserCoords] = useState({});
-  //eslint-disable-next-line
-  const [distanceInkm, setDistanceInkm] = useState(200);
   const [forecasts, setForecasts] = useState([]);
 
   useEffect(() => {
     async function fetch() {
       const latLongArray = buildCoordsByDistance(userCoords.lat, userCoords.long, distanceInkm);
+      // nice work puzzling through Promise.all!
       const promises = latLongArray.map((latLong) => getWeather(latLong.lat, latLong.long));
       const weatherArray = await Promise.all(promises);
       setForecasts(weatherArray);
@@ -29,8 +30,10 @@ export default function SearchPage() {
   }, [userCoords, distanceInkm]);
 
   async function handleSubmit(e) {
-    setIsLoading(true);
+    // preventing default is usually the first thing to do
     e.preventDefault();
+
+    setIsLoading(true);
     const latLong = await getLatLong(userZip);
     setUserCoords(latLong);
   }

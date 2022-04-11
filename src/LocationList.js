@@ -7,9 +7,10 @@ import './App.css';
 export default function LocationList({ locations, fetchAndRefresh, userCoords }) {
   const path = useLocation();
 
+  // nice way to interrogate the path for a conditional render. i do wonder if there's a way to do this just with <Route  /> components, but this looks nice and readable to me
   if (path.pathname.includes('search')) {
 
-    const clearLocations = locations.filter(location => location.weather[0].main === 'Clear');
+    const clearLocations = locations.filter(({weather: [main]}) => main === 'Clear');
 
     return (
       <div className='locations'>
